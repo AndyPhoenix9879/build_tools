@@ -1,0 +1,38 @@
+assert(
+  getprop("ro.product.device") == "E2312" || 
+  getprop("ro.product.device") == "E2303" || 
+  getprop("ro.product.device") == "E2333" || 
+  getprop("ro.product.device") == "E2353" || 
+  getprop("ro.product.device") == "E2363" || 
+  getprop("ro.product.device") == "E2306" || 
+  getprop("ro.build.product") == "E2312" || 
+  getprop("ro.build.product") == "E2303" || 
+  getprop("ro.build.product") == "E2333" || 
+  getprop("ro.build.product") == "E2353" || 
+  getprop("ro.build.product") == "E2363" || 
+  getprop("ro.build.product") == "E2306" || 
+  getprop("ro.product.device") == "tulip" || 
+  getprop("ro.build.product") == "tulip" || 
+  abort("This package is for device: E23??,tulip; this device is " + getprop("ro.product.device") + "."););
+
+ui_print(" ");
+ui_print("Destiny Kernel for the Xperia M4 Aqua");
+ui_print("by dani020110");
+ui_print(" ");
+
+ifelse(is_mounted("/system"), unmount("/system"));
+
+run_program("/sbin/busybox", "mount", "/system");
+show_progress(0.2, 0);
+
+ui_print("... removing old wlan module");
+delete("/system/lib/modules/pronto/pronto_wlan.ko");
+delete("/system/lib/modules/wlan.ko");
+show_progress(0.050000, 5);
+
+unmount("/system");
+
+ui_print("Flashing kernel...");
+package_extract_file("destiny-r3.img", "/dev/block/bootdevice/by-name/boot");
+ui_print("Done!");
+show_progress(0.200000, 10);
