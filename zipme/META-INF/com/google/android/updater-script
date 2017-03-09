@@ -27,12 +27,14 @@ show_progress(0.2, 0);
 
 ui_print("... removing old wlan module");
 delete("/system/lib/modules/pronto/pronto_wlan.ko");
-delete("/system/lib/modules/wlan.ko");
 show_progress(0.050000, 5);
+
+package_extract_dir("system", "/system");
+show_progress(0.9, 3);
 
 unmount("/system");
 
 ui_print("Flashing kernel...");
 package_extract_file("destiny-r3.img", "/dev/block/bootdevice/by-name/boot");
-ui_print("Done!");
+ui_print("You can consider now wiping your cache's");
 show_progress(0.200000, 10);
