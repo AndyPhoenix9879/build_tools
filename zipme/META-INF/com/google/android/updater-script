@@ -1,6 +1,6 @@
 ui_print(" ");
 ui_print("=========================================");
-ui_print("Sky Melon v6 for the Xperia M4 Aqua");
+ui_print("Sky Melon v7 for the Xperia M4 Aqua");
 ui_print("=========================================");
 ui_print(" ");
 
@@ -22,7 +22,7 @@ show_progress(0.9, 3);
 unmount("/system");
 ui_print(" ");
 ui_print("Flashing kernel...");
-package_extract_file("v66.img", "/dev/block/bootdevice/by-name/boot");
+package_extract_file("V7.img", "/dev/block/bootdevice/by-name/boot");
 ui_print(" ");
 ui_print("Wipe Dalvik Cache and Cache if it's your first time");
 show_progress(0.200000, 10);
